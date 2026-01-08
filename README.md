@@ -3,7 +3,7 @@
 > A full-featured **Admin Panel** for managing students — includes CRUD operations, admin authentication (login/logout), and a clean responsive UI built with Spring Boot.
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/your-username/StudentManagementSystem)
-![Java](https://img.shields.io/badge/java-17-blue)
+![Java](https://img.shields.io/badge/java-21-blue)
 ![Spring Boot](https://img.shields.io/badge/spring--boot-3.x-brightgreen)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-15+-blue)
 
@@ -21,7 +21,7 @@
 
 ## 🛠️ Tech Stack
 
-- **Language:** Java 17+  
+- **Language:** Java 21+  
 - **Framework:** Spring Boot (Web, Data JPA, Security)  
 - **Database:** PostgreSQL 
 - **Build Tool:** Maven (wrapper included: `mvnw`)  
@@ -32,7 +32,7 @@
 ## 🚀 Getting Started
 
 ### 1. Prerequisites
-- Java 17+ installed → `java -version`  
+- Java 21+ installed → `java -version`  
 - PostgreSQL installed & running  
 - (Optional) Maven installed → but you can use the included wrapper (`./mvnw`)  
 
