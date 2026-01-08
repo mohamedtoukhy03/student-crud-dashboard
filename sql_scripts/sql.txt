@@ -1,22 +1,45 @@
-CREATE DATABASE "School"
-    WITH
-    ENCODING = 'UTF8'
-    LOCALE_PROVIDER = 'libc'
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
 
--- Connect to the new database
-\c "School";
-
+-- ======================
 -- Students table
+-- ======================
 CREATE TABLE students (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     first_name VARCHAR(15) NOT NULL,
     second_name VARCHAR(15) NOT NULL
 );
 
+-- ======================
 -- Admins table
+-- ======================
 CREATE TABLE admins (
     email VARCHAR(100) PRIMARY KEY,
     password VARCHAR(100) NOT NULL
+);
+
+-- ======================
+-- Roles table
+-- ======================
+CREATE TABLE roles (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- ======================
+-- Admin_Roles (join table)
+-- ======================
+CREATE TABLE admin_roles (
+    admin_email VARCHAR(100) NOT NULL,
+    role_id INT NOT NULL,
+
+    PRIMARY KEY (admin_email, role_id),
+
+    CONSTRAINT fk_admin
+        FOREIGN KEY (admin_email)
+        REFERENCES admins (email)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_role
+        FOREIGN KEY (role_id)
+        REFERENCES roles (id)
+        ON DELETE CASCADE
 );

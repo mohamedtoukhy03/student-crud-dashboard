@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
 
-    StudentService studentService;
+    private final StudentService studentService;
 
     public AdminController(StudentService studentService) {
         this.studentService = studentService;
     }
 
-    @GetMapping("/loginForm")
+    @GetMapping("/")
     public String loginPage(Model model){
         model.addAttribute("admin", new Admin());
         return "loginPage";
@@ -37,7 +36,7 @@ public class AdminController {
     @GetMapping("/deleteStudent")
     public String deleteStudent(@RequestParam int id){
         studentService.deleteById(id);
-        return "redirect:/admin/adminPage";
+        return "redirect:/adminPage";   
     }
 
     @GetMapping("/updateForm")
@@ -48,12 +47,14 @@ public class AdminController {
     }
 
     @PostMapping("/updateStudent")
-    public String updateStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult){
+    public String updateStudent(
+            @Valid @ModelAttribute("student") Student student,
+            BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "updatePage";
         }
         studentService.update(student);
-        return "redirect:/admin/adminPage";
+        return "redirect:/adminPage";   
     }
 
     @GetMapping("/additionForm")
@@ -63,11 +64,13 @@ public class AdminController {
     }
 
     @PostMapping("/addStudent")
-    public String addStudent(@Valid @ModelAttribute("student") Student student,  BindingResult bindingResult){
+    public String addStudent(
+            @Valid @ModelAttribute("student") Student student,
+            BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "additionPage";
         }
         studentService.save(student);
-        return "redirect:/admin/adminPage";
+        return "redirect:/adminPage";
     }
 }

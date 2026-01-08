@@ -9,7 +9,7 @@
 <body>
 
 <div class="card">
-    <form th:action="@{/admin/logout}" method="post">
+    <form th:action="@{/logout}" method="post">
         <button type="submit" class="btn btn-primary" value="Logout">Logout</button>
     </form>
     <br><br>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <br><br>
-    <form th:action="@{/admin/additionForm}" method="get">
+    <form th:action="@{/additionForm}" method="get">
         <button type="submit" class="btn">Add</button>
     </form>
     <table class="students-table" th:if="${students != null}">
@@ -35,17 +35,16 @@
         </thead>
         <tbody>
         <tr th:each="student : ${students}">
-            <!-- data cells -->
             <td th:text="${student.id}"></td>
             <td th:text="${student.firstName}"></td>
             <td th:text="${student.lastName}"></td>
             <td>
                 <div class="student-row-actions">
-                    <form th:action="@{/admin/deleteStudent}" method="get">
+                    <form th:action="@{/deleteStudent}" method="get">
                         <input type="hidden" name="id" th:value="${student.id}"/>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                    <form th:action="@{/admin/updateForm}" method="get">
+                    <form th:action="@{/updateForm}" method="get">
                         <input type="hidden" name="id" th:value="${student.id}"/>
                         <button type="submit" class="btn">Update</button>
                     </form>

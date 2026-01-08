@@ -20,7 +20,7 @@
     </div>
     <br>
 
-    <form id="loginForm" th:action="@{/admin/authenticateUser}" th:object="${admin}" method="post" novalidate>
+    <form id="loginForm" th:action="@{/authenticateUser}" th:object="${admin}" method="post" novalidate>
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
         <label for="loginEmail">Email</label>

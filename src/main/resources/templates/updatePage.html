@@ -8,7 +8,7 @@
     <title>updatePage</title>
 </head>
 <body>
-    <form th:object="${student}" th:action="@{/admin/updateStudent}" method="post">
+    <form th:object="${student}" th:action="@{/updateStudent}" method="post">
         <input type="hidden" th:field="*{id}" />
         <label>
             <input type="text" th:field="*{firstName}" />
